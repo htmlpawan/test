@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="product-card" *ngFor="let product of products">
+  <h3 [class]="'title'">{{product.title}}</h3>
+  <p [class]="'desc'">{{product.desc}}</p>
+</div>
+
+<h1 [style.color]="'red'">Heading</h1>
+
+<p [style.fontSize.px]="30">Paragraph</p>
+
+<ul>
+  <li *ngFor="let person of people;let i=index;" [ngStyle]="{'color':getColor(person.country)}">
+    {{i+1}}
+    {{person.name}}
+    {{person.country}}
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let person of people;let i=index;" [ngStyle]="{'background-color':person.country === 'USA' ? 'red' : 'green'}">
+    {{i+1}}
+    {{person.name}}
+    {{person.country}}
+  </li>
+</ul>
+
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr>
+    <th>Sr. No.</th>
+    <th>Name</th>
+    <th>Job Location</th>
+  </tr>
+  <tr *ngFor="let table of tables;let i=index;let first=first;let last=last;let even=even;let odd=odd;" [ngClass]="{first:first,last:last,even:even,odd:odd}">
+  <td>{{i+1}}</td>
+  <td>{{table.name}}</td>
+  <td>{{table.jobLocation}}</td>
+</tr>
+</table>
+
+<div class="switch-block">
+  <ul class="list-inline list-tab">
+  <li [class.active]="viewMode == 'tab1'" (click)="viewMode = 'tab1'">
+    <a href="">tab1</a>
+  </li>
+  <li [class.active]="viewMode == 'tab2'" (click)="viewMode = 'tab2'">
+    <a href="">tab2</a>
+  </li>
+  <li [class.active]="viewMode == 'tab1'" (click)="viewMode = 'tab1'">
+    <a href="">tab1</a>
+  </li>
+  <li [class.active]="viewMode == 'tab2'" (click)="viewMode = 'tab2'">
+    <a href="">tab2</a>
+  </li>
+</ul>
+<div class="tab-container" [ngSwitch]="viewMode">
+  <div class="tab-content" *ngSwitchCase="'tab1'">
+    <h3>tab1</h3>
+  </div>
+  <div class="tab-content" *ngSwitchCase="'tab2'">
+    <h3>tab2</h3>
+  </div>
+</div>
+</div>
+
+<div class="click-tabbed-block">
+  <ul class="list-inline list-tab">
+  <li (click)="tab ='tab1'" [ngClass]="{'active' : tab ==='tab1'}">Tab1</li>
+  <li (click)="tab='tab2'" [ngClass]="{'active' : tab === 'tab2'}">tab2</li>
+  <li (click)="tab='tab3'" [ngClass]="{'active' : tab === 'tab3'}">tab3</li>
+</ul>
+</div>
+
+<br><br>
+  
+<div class="step-block">
+  <ul class="list-inline list-tab">
+    <li (click)="onClick(1)" [ngClass]="{'active' : tab === 'tab1'}">Step 1</li>
+    <li (click)="onClick(2)" [ngClass]="{'active' : tab === 'tab2'}">Step 2</li>
+    <li (click)="onClick(3)" [ngClass]="{'active' : tab === 'tab3'}">Step 3</li>
+  </ul>
+</div>
+
+<!-- START TOGGLE GREEN AND RED ENDABLE AND DISABLE TEXT -->
+<div class="button-bg-block">
+  <!-- <button [style.background-color]="toggle ? 'green' : 'red'" (click)="enabledisable()">{{status}}</button> -->
+  <button [style.background-color]="toggle ? 'green' : 'red'" (click)="enabledisabled()">{{status}}</button>
+</div>
+<!-- END TOGGLE GREEN AND RED ENDABLE AND DISABLE TEXT -->
+
+<!-- START IMAGE -->
+<div [className]="'div_img'" *ngFor="let image of imageList" [style.background]="'url(' + image + ')'"></div>
+<!-- END IMAGE -->
+
+<!-- START TOGGLE HIDE AND SHOW -->
+<button (click)='toggle()'>{{buttonName}}</button>
+<div *ngIf="show">
+  <p>Part A</p>
+  <p>{{show}}</p>
+</div>
+
+<div *ngIf="!(show)">
+  <p>Part B</p>
+  <p>{{show}}</p>
+</div>
+<!-- START TOGGLE HIDE AND SHOW -->
+
+<!-- START ADD NEW PERSON -->
+<div *ngFor="let person of listpeople ">{{person}}</div>
+<button (click)="btnAdd()">Give me a new person</button>
+
+<!-- START ADD NEW PERSON -->
+</body>
+</html>

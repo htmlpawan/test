@@ -1,0 +1,36 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -ms-box-sizing:border-box;
+}
+
+ul,ol{step-block
+  list-style-type:none;
+}
+
+.list-inline li{
+  display:inline-block;
+}
+
+.switch-block ul li a{
+  display:block;
+  padding:10px 20px;
+  background:#333;
+  color:#fff;
+  text-decoration:none;
+  outline:none;
+}
+
+.switch-block ul li.active a{
+  background:#ed3237;
+  color:#fff;
+}
+
+.click-tabbed-block .list-tab .active,
+.step-block .list-tab .active{
+  text-decoration:underline;
+  color:#ff0000;
+}
